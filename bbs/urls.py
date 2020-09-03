@@ -15,7 +15,12 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from blog import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'reg/',views.register),
+    url(r'index/',views.index),
+    url(r'login/',views.login),
+    url(r'get_valid_img.png/',views.get_valid_img),
 ]

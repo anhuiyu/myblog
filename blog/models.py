@@ -12,7 +12,7 @@ class UserInfo(AbstractUser):
     nid = models.AutoField(primary_key=True)
     phone = models.CharField(max_length=11, null=True, unique=True)  # 如果phone在数据库中是空值，就设置为null
     create_time = models.DateTimeField(auto_now_add=True)
-    models.FileField(verbose_name="头像", default="avatars/default.png", upload_to="avatars/")
+    avatar=models.FileField(verbose_name="头像", default="avatars/default.png", upload_to="avatars/")
     blog = models.OneToOneField(to="Blog", to_field="nid", null=True)
 
     def __str__(self):
