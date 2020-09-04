@@ -1,7 +1,8 @@
-from django.shortcuts import render,HttpResponse
+from django.shortcuts import render,HttpResponse,redirect
 from django.contrib import  auth
 from .forms import RegForm
 from .models import UserInfo
+from blog import models
 from django.http import JsonResponse
 from PIL import Image,ImageDraw,ImageFont
 from io import BytesIO
@@ -92,4 +93,19 @@ def get_valid_img(request):
     return HttpResponse(data)
 
 def index(request):
-    return render(request,"index.html")
+    #查询所有的文章列表
+    article_list = models.Article.objects.all()
+    return render(request,"index.html",{"article_list":article_list})
+
+def logout(request):
+    auth.logout(request)
+    return redirect("/index/")
+
+def check_username_exist(request):
+    ret = {"status": 0, "msg": ""}
+    username=request.GET.get("username")
+    user_obj=models.UserInfo.objects.filter(username=username)
+    if user_obj:
+        ret["status"]=1
+        ret["msg"]="用户名已注册"
+    return JsonResponse(ret)

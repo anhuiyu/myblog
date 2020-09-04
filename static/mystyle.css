@@ -10,3 +10,19 @@
     width:80px;
     height:80px;
 }
+.author-img {
+    width:80px;
+    height:80px;
+}
+.login-form {
+    margin-top: 70px;
+}
+.reg-form {
+    margin-top: 70px;
+}
+.article-footer span {
+    margin-right: 15px;
+}
+.article-footer {
+    margin-top: 10px;
+}

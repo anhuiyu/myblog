@@ -16,11 +16,16 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from blog import views
+from django.views.static import serve
+from django.conf import settings
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'reg/',views.register),
     url(r'index/',views.index),
     url(r'login/',views.login),
+    url(r'logout/',views.logout),
+    url(r'check_username_exist/',views.check_username_exist),
     url(r'get_valid_img.png/',views.get_valid_img),
+    url(r'^media/(?P<path>.*)$', serve, {"document_root": settings.MEDIA_ROOT}),
 ]

@@ -108,7 +108,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'zh-hans'
 
 TIME_ZONE = 'UTC'
 
@@ -128,3 +128,8 @@ STATICFILES_DIRS = [
 ]
 
 AUTH_USER_MODEL = 'blog.UserInfo'
+
+#Django用户上传的都叫media文件
+MEDIA_URL = "/media/"
+#media配置，用户上传的文件都默认放在这个文件夹下
+MEDIA_ROOT = os.path.join(BASE_DIR,"media")

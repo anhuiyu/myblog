@@ -104,6 +104,24 @@
     $("form input").focus(function(){
         $(this).next().text("").parent().parent().removeClass("has-error");
     })
+
+    //给username input框绑定一个输入事件，失去焦点之后就校验用户名是否已被注册
+    $("#id_username").on("input",function(){
+        //取用户填写的值
+        var username=$(this).val();
+        //发请求
+        $.ajax({
+            url:"/check_username_exist/",
+            type:"get",
+            data:{"username":username},
+            success: function(data){
+                if(data.status){
+                    //用户名已被注册
+                    $("#id_username").next().text(data.msg).parent().parent().addClass("has-error");
+                }
+            }
+        })
+    })
 </script>
 </body>
 </html>
