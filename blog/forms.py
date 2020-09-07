@@ -6,6 +6,7 @@ bbs 用到的form类
 from django import forms
 from django.forms import widgets
 from django.core.exceptions import ValidationError
+from blog import models
 
 #定义一个注册的form类
 class RegForm(forms.Form):
@@ -52,6 +53,15 @@ class RegForm(forms.Form):
             attrs={"class": "form-control"}
         )
     )
+    #重写email字段的局部钩子
+    def clean_email(self):
+        email=self.cleaned_data.get("email")
+        is_exist=models.UserInfo.objects.filter(email=email)
+        if is_exist:
+            self.add_error("username",ValidationError("邮箱已注册"))
+        else:
+            return email
+
     #重写全局的钩子函数，对确认密码做校验
     def clean(self):
         password=self.cleaned_data.get("password")

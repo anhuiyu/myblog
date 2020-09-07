@@ -6,6 +6,7 @@ from blog import models
 from django.http import JsonResponse
 from PIL import Image,ImageDraw,ImageFont
 from io import BytesIO
+from django.db.models import Count
 import random
 
 
@@ -109,3 +110,28 @@ def check_username_exist(request):
         ret["status"]=1
         ret["msg"]="用户名已注册"
     return JsonResponse(ret)
+
+#个人博客主页
+def home(request,username):
+    user=models.UserInfo.objects.filter(username=username).first()
+    if not  user:
+        return HttpResponse("404")
+    #如果用户存则需要将TA写的所有文章找出来
+    blog=user.blog
+    #我的文章列表
+    article_list=models.Article.objects.filter(user=user)
+    #我的文章分类及每个分类下文章数
+    category_list=models.Category.objects.filter(blog=blog).annotate(c=Count("article")).values("title","c")
+    tag_list=models.Tag.objects.filter(blog=blog).annotate(c=Count("article")).values("title","c")
+    #按日期归档
+    archive_list=models.Article.objects.filter(user=user).extra(
+        select={"archive_ym":"date_format(create_time,'%%Y-%m')"}
+    ).values("archive_ym").annotate(c=Count("nid")).values("archive_ym","c")
+    return render(request,"home.html",{
+        "username":username,
+        "blog":blog,
+        "article_list":article_list,
+    })
+
+def article_detail(request):
+    pass
