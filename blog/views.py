@@ -121,17 +121,31 @@ def home(request,username):
     #我的文章列表
     article_list=models.Article.objects.filter(user=user)
     #我的文章分类及每个分类下文章数
-    category_list=models.Category.objects.filter(blog=blog).annotate(c=Count("article")).values("title","c")
-    tag_list=models.Tag.objects.filter(blog=blog).annotate(c=Count("article")).values("title","c")
+    # category_list=models.Category.objects.filter(blog=blog).annotate(c=Count("article")).values("title","c")
+    # tag_list=models.Tag.objects.filter(blog=blog).annotate(c=Count("article")).values("title","c")
     #按日期归档
-    archive_list=models.Article.objects.filter(user=user).extra(
-        select={"archive_ym":"date_format(create_time,'%%Y-%m')"}
-    ).values("archive_ym").annotate(c=Count("nid")).values("archive_ym","c")
+    # archive_list=models.Article.objects.filter(user=user).extra(
+    #     select={"archive_ym":"date_format(create_time,'%%Y-%m')"}
+    # ).values("archive_ym").annotate(c=Count("nid")).values("archive_ym","c")
     return render(request,"home.html",{
         "username":username,
         "blog":blog,
         "article_list":article_list,
     })
 
-def article_detail(request):
-    pass
+def article_detail(request,username,pk):
+    user=models.UserInfo.objects.filter(username=username).first()
+    if not user:
+        return HttpResponse("404")
+    blog=user.blog
+    #找到当前的文章
+    article_obj=models.Article.objects.filter(pk=pk).first()
+    return render(
+        request,
+        "article_detail.html",
+        {
+            "username":username,
+            "article":article_obj,
+            "blog":blog,
+        }
+    )

@@ -100,6 +100,7 @@ class ArticleDetail(models.Model):
     文章详情表
     """
     nid = models.AutoField(primary_key=True)
+    content = models.TextField(default="xixixi")
     article = models.OneToOneField(to="Article", to_field="nid")
     class Meta:
         verbose_name = "文章详情"
