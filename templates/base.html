@@ -5,7 +5,10 @@
     <title>{{ blog.title }}</title>
     <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/static/fontawesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/mystyle.css">
     <link rel="stylesheet" href="/static/theme/{{ blog.theme }}">
+    <script src="/static/jquery-3.3.1.js"></script>
+    <script src="/static/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
     <div class="header">
@@ -18,11 +21,8 @@
         </div>
         <div class="col-md-8">
             {% block page-main %}
-
             {% endblock %}
         </div>
     </div>
-    <script src="/static/jquery-3.3.1.js"></script>
-    <script src="/static/bootstrap/js/bootstrap.min.js"></script>
 </body>
 </html>

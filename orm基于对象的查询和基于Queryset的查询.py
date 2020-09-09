@@ -30,7 +30,11 @@ if __name__=='__main__':
     # for i in ret:
     #     print(i.title,i.article_set.all().count())
     #上面4行语句可以用一行语句代替
-    ret=models.Category.objects.filter(blog=blog).annotate(c=Count("article")).values("title","c")
+    # ret=models.Category.objects.filter(blog=blog).annotate(c=Count("article")).values("title","c")
+    # print(ret)
+    
+    #由文章表查询tag表
+    ret=models.Article.objects.filter(user=user).filter(tag__title="python")
     print(ret)
 
 

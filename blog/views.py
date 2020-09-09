@@ -8,7 +8,8 @@ from PIL import Image,ImageDraw,ImageFont
 from io import BytesIO
 from django.db.models import Count
 import random
-
+import json
+from django.db.models import F
 
 # Create your views here.
 #注册的视图函数
@@ -149,3 +150,17 @@ def article_detail(request,username,pk):
             "blog":blog,
         }
     )
+
+def up_down(request):
+    article_id=request.POST.get("article_id")
+    is_up=json.loads(request.POST.get("is_up"))
+    user=request.user
+    response={"state":True}
+    try:
+        models.ArticleUpDown.objects.create(user=user,article_id=article_id,is_up=is_up)
+        models.Article.objects.filter(pk=article_id).update(up_count=F("up_count")+1)
+    except Exception as e:
+        response["state"]=False
+        response["first_action"]=models.ArticleUpDown.objects.filter(user=user,article_id=article_id).first().is_up
+        print(response)
+    return JsonResponse(response)
