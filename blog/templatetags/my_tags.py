@@ -8,7 +8,7 @@ register=template.Library()
 def get_left_menu(username):
     user=models.UserInfo.objects.filter(username=username).first()
     blog=user.blog
-    category_list=models.Category.objects.filter(blog=blog).annotate(c=Count("article")).values("title","c")
+    category_list=models.Category.objects.filter(user=user).filter(blog=blog).annotate(c=Count("article")).values("title","c")
     tag_list=models.Tag.objects.filter(blog=blog).annotate(c=Count("article")).values("title","c")
     archive_list = models.Article.objects.filter(user=user).extra(
         select={"archive_ym": "date_format(create_time,'%%Y-%%m')"}
@@ -17,4 +17,5 @@ def get_left_menu(username):
         "category_list":category_list,
         "tag_list":tag_list,
         "archive_list":archive_list,
+        "username":username,
     }

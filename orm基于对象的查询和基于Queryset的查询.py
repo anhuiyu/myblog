@@ -34,7 +34,12 @@ if __name__=='__main__':
     # print(ret)
     
     #由文章表查询tag表
-    ret=models.Article.objects.filter(user=user).filter(tag__title="python")
+    # ret=models.Article.objects.filter(user=user).filter(tag__title="python")
+    # print(ret)
+    year="2020"
+    month="09"
+    ret = models.Article.objects.filter(user=user).filter(
+        create_time__year=year,create_time__month=month
+    )
     print(ret)
-
 

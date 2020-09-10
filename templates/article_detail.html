@@ -21,7 +21,7 @@
         var is_up=$(this).hasClass("diggit");
         var article_id="{{ article.pk }}";
         $.ajax({
-            url:"/blog/updown/",
+            url:"/blog/up_down/",
             type:"post",
             data:{
                 "is_up":is_up,

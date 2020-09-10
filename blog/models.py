@@ -85,16 +85,12 @@ class Article(models.Model):
     down_count = models.IntegerField(verbose_name="踩数", default=0)
     user = models.ForeignKey(to="UserInfo", to_field="nid")
     tag = models.ManyToManyField(to="Tag", through="Article2Tag", through_fields=("article", "tag"), )  #
-
     # 中介模型，注意through_fields顺序
-
     def __str__(self):
         return self.title
     class Meta:
         verbose_name = "文章"
         verbose_name_plural = verbose_name
-
-
 class ArticleDetail(models.Model):
     """
     文章详情表

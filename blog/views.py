@@ -10,6 +10,10 @@ from django.db.models import Count
 import random
 import json
 from django.db.models import F
+import logging
+
+#生成一个logger实例，专门用来记录日志
+logger=logging.getLogger(__name__)
 
 # Create your views here.
 #注册的视图函数
@@ -113,14 +117,18 @@ def check_username_exist(request):
     return JsonResponse(ret)
 
 #个人博客主页
-def home(request,username):
+def home(request,username,*args):
+    logger.debug("home视图获取到用户名:{}".format(username))
     user=models.UserInfo.objects.filter(username=username).first()
     if not  user:
+        logger.warning("又有人访问不存在页面了")
         return HttpResponse("404")
     #如果用户存则需要将TA写的所有文章找出来
     blog=user.blog
     #我的文章列表
-    article_list=models.Article.objects.filter(user=user)
+    if not args:
+        logger.debug("args没有接收到参数，默认走的是用户的个人博客页面")
+        article_list=models.Article.objects.filter(user=user)
     #我的文章分类及每个分类下文章数
     # category_list=models.Category.objects.filter(blog=blog).annotate(c=Count("article")).values("title","c")
     # tag_list=models.Tag.objects.filter(blog=blog).annotate(c=Count("article")).values("title","c")
@@ -128,6 +136,27 @@ def home(request,username):
     # archive_list=models.Article.objects.filter(user=user).extra(
     #     select={"archive_ym":"date_format(create_time,'%%Y-%m')"}
     # ).values("archive_ym").annotate(c=Count("nid")).values("archive_ym","c")
+    else:
+        logger.debug(args)
+        logger.debug("----------------")
+        #表示按照文章的分类或tag或日期归档查询
+        if args[0]=="category":
+            article_list=models.Article.objects.filter(user=user).filter(category__title=args[1])
+        elif args[0]=="tag":
+            article_list = models.Article.objects.filter(user=user).filter(tag__title=args[1])
+        else:
+            try:
+                year,month=args[1].split("-")
+                logger.debug("分割得到参数year:{},month:{}".format(year,month))
+                logger.debug("*******")
+                article_list=models.Article.objects.filter(user=user).filter(
+                    create_time__year=year,create_time__month=month
+                )
+                print(article_list)
+            except Exception as e:
+                logger.warning("请求访问的日志归档柜式不正确!!!")
+                logger.warning(str(e))
+                return HttpResponse("404")
     return render(request,"home.html",{
         "username":username,
         "blog":blog,
@@ -160,6 +189,7 @@ def up_down(request):
         models.ArticleUpDown.objects.create(user=user,article_id=article_id,is_up=is_up)
         models.Article.objects.filter(pk=article_id).update(up_count=F("up_count")+1)
     except Exception as e:
+        print("1")
         response["state"]=False
         response["first_action"]=models.ArticleUpDown.objects.filter(user=user,article_id=article_id).first().is_up
         print(response)
