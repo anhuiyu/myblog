@@ -33,4 +33,6 @@ urlpatterns = [
     url(r'get_valid_img.png/',views.get_valid_img),
     #media相关的路由设置
     url(r'^media/(?P<path>.*)$', serve, {"document_root": settings.MEDIA_ROOT}),
+    url(r'upload/$',views.upload),
+    url(r'^$',views.index),
 ]

@@ -8,10 +8,11 @@ from PIL import Image,ImageDraw,ImageFont
 from io import BytesIO
 from django.db.models import Count
 import random
-import json
+import json,os
 from django.db.models import F
 import logging
-
+from bbs import settings
+from bs4 import BeautifulSoup
 #生成一个logger实例，专门用来记录日志
 logger=logging.getLogger(__name__)
 
@@ -216,3 +217,32 @@ def comment(request):
 def comment_tree(request,article_id):
     ret=list(models.Comment.objects.filter(article_id=article_id).values("pk","content","parent_comment_id"))
     return JsonResponse(ret,safe=False)
+
+def add_article(request):
+    if request.method=="POST":
+        title=request.POST.get("title")
+        article_content=request.POST.get("article_content")
+        user=request.user
+        #截取前150个字符，这里会选取真实的内容，不选标签
+        bs=BeautifulSoup(article_content,"html.parser")
+        desc=bs.text[0:150]+"..."
+        #过滤非法标签
+        for tag in bs.find_all():
+            if tag.name in ["script","link"]:
+                tag.decompose()
+        article_obj=models.Article.objects.create(user=user,title=title,desc=desc)
+        models.ArticleDetail.objects.create(content=str(bs),article=article_obj)
+        return HttpResponse("添加成功")
+    return render(request,"add_article.html")
+
+def upload(request):
+    obj=request.FILES.get("upload_img")
+    path=os.path.join(settings.MEDIA_ROOT,"add_article_img",obj.name)
+    with open(path,"wb") as f:
+        for line in obj:
+            f.write(line)
+        res={
+            "error":0,
+            "url":"/media/add_article_img/"+obj.name
+        }
+    return HttpResponse(json.dumps(res))

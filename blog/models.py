@@ -75,7 +75,7 @@ class Article(models.Model):
     nid = models.AutoField(primary_key=True)
     title = models.CharField(max_length=50)  # 文章标题
     desc = models.CharField(max_length=255)  # 文章描述
-    create_time = models.DateTimeField()  # 创建时间
+    create_time = models.DateTimeField(auto_now_add=True)  # 创建时间
     category = models.ForeignKey(to="Category", to_field="nid", null=True)
     # 评论数
     comment_count = models.IntegerField(verbose_name="评论数", default=0)
