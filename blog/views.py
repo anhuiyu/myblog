@@ -53,7 +53,7 @@ def login(request):
             if user:
                 #用户名密码正确，给用户做登录
                 auth.login(request,user)
-                ret["msg"]="/index/"
+                ret["msg"]="/blog/"+username
             else:
                 #用户名密码错误
                 ret["status"]=1
@@ -214,9 +214,9 @@ def comment(request):
     response["username"]=comment_obj.user.username
     return JsonResponse(response)
 
-def comment_tree(request,article_id):
-    ret=list(models.Comment.objects.filter(article_id=article_id).values("pk","content","parent_comment_id"))
-    return JsonResponse(ret,safe=False)
+# def comment_tree(request,article_id):
+#     ret=list(models.Comment.objects.filter(article_id=article_id).values("pk","content","parent_comment_id"))
+#     return JsonResponse(ret,safe=False)
 
 def add_article(request):
     if request.method=="POST":

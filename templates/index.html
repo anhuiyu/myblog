@@ -20,8 +20,8 @@
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-        <li><a href="#">Link</a></li>
+<!--        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>-->
+<!--        <li><a href="#">Link</a></li>-->
       </ul>
       <ul class="nav navbar-nav navbar-right">
         {% if request.user.username %}
@@ -29,11 +29,11 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">个人中心 <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="/logout/">注销</a></li>
+<!--            <li><a href="#">Action</a></li>-->
+<!--            <li><a href="#">Another action</a></li>-->
+<!--            <li><a href="#">Something else here</a></li>-->
+<!--            <li role="separator" class="divider"></li>-->
+            <li><a href="/logout/">退出</a></li>
           </ul>
         </li>
         {% else %}
@@ -51,13 +51,13 @@
             <div class="panel panel-primary">
                 <div class="panel-heading">左侧广告位一</div>
                 <div class="panel-body">
-                    Panel content
+                    <a href="https://www.python.org/">人生苦短，我用python</a>
                 </div>
             </div>
             <div class="panel panel-info">
                 <div class="panel-heading">左侧广告位二</div>
                 <div class="panel-body">
-                    Panel content
+                    <a href="https://developer.oracle.com/java/">搞web，用java</a>
                 </div>
             </div>
         </div>
@@ -91,13 +91,13 @@
             <div class="panel panel-primary">
                 <div class="panel-heading">右侧广告位一</div>
                 <div class="panel-body">
-                    Panel content
+                    <a href="https://www.kubernetes.org.cn/k8s">容器技术之k8s</a>
                 </div>
             </div>
             <div class="panel panel-info">
                 <div class="panel-heading">右侧广告位二</div>
                 <div class="panel-body">
-                    Panel content
+                    <a href="#">人生赢家</a>
                 </div>
             </div>
         </div>

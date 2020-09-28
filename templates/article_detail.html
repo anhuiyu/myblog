@@ -16,7 +16,7 @@
     <div class="diggword" id="digg_tips" style="color: red;"></div>
 </div>
 </div>
-<p>评论树</p>
+<!--<p>评论树</p>-->
 <div class="comment_tree">
 
 </div>
@@ -61,21 +61,21 @@
 
 <script>
     //展现评论树
-    $.ajax({
-        url:"/blog/comment_tree/"+'{{ article.pk }}'+"/",
-        success: function(data){
-            $.each(data,function(index,comment_dict){
-                var s= '<div class="comment_item" comment_id=' + comment_dict.pk + '> <span class="content">' + comment_dict.content + '</span> </div>';
-                if (comment_dict.parent_comment_id){
-                    //子评论
-                    pid=comment_dict.parent_comment_id;
-                    $("[comment_id="+pid+"]").append(s);
-                }else {
-                    $(".comment_tree").append(s);
-                }
-            })
-        }
-    });
+<!--    $.ajax({-->
+<!--        url:"/blog/comment_tree/"+'{{ article.pk }}'+"/",-->
+<!--        success: function(data){-->
+<!--            $.each(data,function(index,comment_dict){-->
+<!--                var s= '<div class="comment_item" comment_id=' + comment_dict.pk + '> <span class="content">' + comment_dict.content + '</span> </div>';-->
+<!--                if (comment_dict.parent_comment_id){-->
+<!--                    //子评论-->
+<!--                    pid=comment_dict.parent_comment_id;-->
+<!--                    $("[comment_id="+pid+"]").append(s);-->
+<!--                }else {-->
+<!--                    $(".comment_tree").append(s);-->
+<!--                }-->
+<!--            })-->
+<!--        }-->
+<!--    });-->
     //提交评论
     var pid="";
     $("#comment_btn").click(function(){
