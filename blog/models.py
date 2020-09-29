@@ -98,6 +98,8 @@ class ArticleDetail(models.Model):
     nid = models.AutoField(primary_key=True)
     content = models.TextField(default="xixixi")
     article = models.OneToOneField(to="Article", to_field="nid")
+    def __str__(self):
+        return self.article.title
     class Meta:
         verbose_name = "文章详情"
         verbose_name_plural = verbose_name

@@ -1,1 +1,522 @@
 [2020-09-27 17:01:01,004][Thread-9:9732][task_id:django.request][base.py:152][WARNING][Not Found: /blog/]
+[2020-09-28 09:17:33,434][Thread-4:6228][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2020-09-28 10:14:37,891][Thread-8:8868][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /blog/backend/add_article/]
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\myblog\blog\views.py", line 236, in add_article
+    request.user.user.name
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\utils\functional.py", line 239, in inner
+    return func(self._wrapped, *args)
+AttributeError: 'AnonymousUser' object has no attribute 'user'
+[2020-09-28 10:17:20,888][Thread-8:6316][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /blog/backend/add_article/]
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\myblog\blog\views.py", line 233, in add_article
+    article_obj=models.Article.objects.create(user=user,title=title,desc=desc)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\query.py", line 392, in create
+    obj = self.model(**kwargs)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\base.py", line 555, in __init__
+    _setattr(self, field.name, rel_obj)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\fields\related_descriptors.py", line 216, in __set__
+    self.field.remote_field.model._meta.object_name,
+ValueError: Cannot assign "<SimpleLazyObject: <django.contrib.auth.models.AnonymousUser object at 0x00000000051CE9E8>>": "Article.user" must be a "UserInfo" instance.
+[2020-09-28 10:42:04,971][Thread-1:7140][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /blog/backend/add_article/]
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\myblog\blog\views.py", line 236, in add_article
+    print(request.user.blog)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\utils\functional.py", line 239, in inner
+    return func(self._wrapped, *args)
+AttributeError: 'AnonymousUser' object has no attribute 'blog'
+[2020-09-28 10:56:36,230][Thread-7:2016][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /blog/backend/add_article/]
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\myblog\blog\views.py", line 237, in add_article
+    blog=request.user.blog
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\utils\functional.py", line 239, in inner
+    return func(self._wrapped, *args)
+AttributeError: 'AnonymousUser' object has no attribute 'blog'
+[2020-09-28 10:57:56,168][Thread-9:7628][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /blog/backend/add_article/]
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\myblog\blog\views.py", line 237, in add_article
+    blog=request.user.blog
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\utils\functional.py", line 239, in inner
+    return func(self._wrapped, *args)
+AttributeError: 'AnonymousUser' object has no attribute 'blog'
+[2020-09-28 10:59:56,851][Thread-13:8372][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /blog/backend/add_article/]
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\myblog\blog\views.py", line 237, in add_article
+    blog=request.user.blog
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\utils\functional.py", line 239, in inner
+    return func(self._wrapped, *args)
+AttributeError: 'AnonymousUser' object has no attribute 'blog'
+[2020-09-28 11:00:01,200][Thread-15:8136][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /blog/backend/add_article/]
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\myblog\blog\views.py", line 237, in add_article
+    blog=request.user.blog
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\utils\functional.py", line 239, in inner
+    return func(self._wrapped, *args)
+AttributeError: 'AnonymousUser' object has no attribute 'blog'
+[2020-09-28 11:00:13,575][Thread-17:8504][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /blog/backend/add_article/]
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\myblog\blog\views.py", line 237, in add_article
+    blog=request.user.blog
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\utils\functional.py", line 239, in inner
+    return func(self._wrapped, *args)
+AttributeError: 'AnonymousUser' object has no attribute 'blog'
+[2020-09-28 11:02:34,336][Thread-1:9160][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /blog/backend/add_article/]
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\myblog\blog\views.py", line 239, in add_article
+    blog = request.user.blog
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\utils\functional.py", line 239, in inner
+    return func(self._wrapped, *args)
+AttributeError: 'AnonymousUser' object has no attribute 'blog'
+[2020-09-28 11:02:38,280][Thread-3:8496][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /blog/backend/add_article/]
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\myblog\blog\views.py", line 239, in add_article
+    blog = request.user.blog
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\utils\functional.py", line 239, in inner
+    return func(self._wrapped, *args)
+AttributeError: 'AnonymousUser' object has no attribute 'blog'
+[2020-09-28 11:03:22,808][Thread-1:6616][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /blog/backend/add_article/]
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\myblog\blog\views.py", line 240, in add_article
+    blog = request.user.blog
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\utils\functional.py", line 239, in inner
+    return func(self._wrapped, *args)
+AttributeError: 'AnonymousUser' object has no attribute 'blog'
+[2020-09-28 11:03:50,216][Thread-1:5184][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /blog/backend/add_article/]
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\myblog\blog\views.py", line 240, in add_article
+    blog = request.user.blog
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\utils\functional.py", line 239, in inner
+    return func(self._wrapped, *args)
+AttributeError: 'AnonymousUser' object has no attribute 'blog'
+[2020-09-28 11:13:36,371][Thread-4:8056][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /blog/backend/add_article/]
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\myblog\blog\views.py", line 235, in add_article
+    article_obj=models.Article.objects.create(user=user,title=title,desc=desc,category=category,tag=tag)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\query.py", line 392, in create
+    obj = self.model(**kwargs)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\base.py", line 555, in __init__
+    _setattr(self, field.name, rel_obj)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\fields\related_descriptors.py", line 216, in __set__
+    self.field.remote_field.model._meta.object_name,
+ValueError: Cannot assign "'on'": "Article.category" must be a "Category" instance.
+[2020-09-28 11:20:02,285][Thread-4:7408][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /blog/backend/add_article/]
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\myblog\blog\views.py", line 237, in add_article
+    article_obj.category=category
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\fields\related_descriptors.py", line 216, in __set__
+    self.field.remote_field.model._meta.object_name,
+ValueError: Cannot assign "'on'": "Article.category" must be a "Category" instance.
+[2020-09-28 11:21:06,303][Thread-4:6448][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /blog/backend/add_article/]
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\myblog\blog\views.py", line 236, in add_article
+    article_obj=models.Article.objects.create(user=user,title=title,desc=desc)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\fields\related_descriptors.py", line 216, in __set__
+    self.field.remote_field.model._meta.object_name,
+ValueError: Cannot assign "'on'": "Article.category" must be a "Category" instance.
+[2020-09-28 11:21:58,448][Thread-8:4892][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /blog/backend/add_article/]
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\myblog\blog\views.py", line 236, in add_article
+    article_obj=models.Article.objects.create(user=user,title=title,desc=desc)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\fields\related_descriptors.py", line 216, in __set__
+    self.field.remote_field.model._meta.object_name,
+ValueError: Cannot assign "'python'": "Article.category" must be a "Category" instance.
+[2020-09-28 11:23:56,494][Thread-4:7436][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /blog/backend/add_article/]
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\myblog\blog\views.py", line 238, in add_article
+    article_obj.category=category
+NameError: name 'category' is not defined
+[2020-09-28 11:25:07,613][Thread-4:7832][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /blog/backend/add_article/]
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\myblog\blog\views.py", line 237, in add_article
+    article_obj=models.Article.objects.create(user=user,title=title,desc=desc,category=category_obj,tag=tag_obj)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\query.py", line 392, in create
+    obj = self.model(**kwargs)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\base.py", line 555, in __init__
+    _setattr(self, field.name, rel_obj)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\fields\related_descriptors.py", line 216, in __set__
+    self.field.remote_field.model._meta.object_name,
+ValueError: Cannot assign "<QuerySet [<Category: python>]>": "Article.category" must be a "Category" instance.
+[2020-09-28 13:27:05,511][Thread-8:8148][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /blog/backend/add_article/]
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\myblog\blog\views.py", line 237, in add_article
+    article_obj=models.Article.objects.create(user=user,title=title,desc=desc,category=category_obj,tag=tag_obj)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\query.py", line 392, in create
+    obj = self.model(**kwargs)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\base.py", line 555, in __init__
+    _setattr(self, field.name, rel_obj)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\fields\related_descriptors.py", line 216, in __set__
+    self.field.remote_field.model._meta.object_name,
+ValueError: Cannot assign "<QuerySet [<Category: python>]>": "Article.category" must be a "Category" instance.
+[2020-09-28 13:31:54,218][Thread-4:5732][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /blog/backend/add_article/]
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\myblog\blog\views.py", line 237, in add_article
+    article_obj=models.Article.objects.create(user=user,title=title,desc=desc,category_id=category_id,tag_id=tag_id)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\query.py", line 392, in create
+    obj = self.model(**kwargs)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\base.py", line 573, in __init__
+    raise TypeError("'%s' is an invalid keyword argument for this function" % list(kwargs)[0])
+TypeError: 'tag_id' is an invalid keyword argument for this function
+[2020-09-28 13:34:46,655][Thread-8:6984][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /blog/backend/add_article/]
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\myblog\blog\views.py", line 237, in add_article
+    article_obj=models.Article.objects.create(user=user,title=title,desc=desc,category_id=category_id,tag_id=tag_id)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\query.py", line 392, in create
+    obj = self.model(**kwargs)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\base.py", line 573, in __init__
+    raise TypeError("'%s' is an invalid keyword argument for this function" % list(kwargs)[0])
+TypeError: 'tag_id' is an invalid keyword argument for this function
+[2020-09-28 13:36:01,158][Thread-12:7672][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /blog/backend/add_article/]
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\myblog\blog\views.py", line 237, in add_article
+    article_obj=models.Article.objects.create(user=user,title=title,desc=desc,category_id=category_id,tag_id=tag_id)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\query.py", line 392, in create
+    obj = self.model(**kwargs)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\base.py", line 573, in __init__
+    raise TypeError("'%s' is an invalid keyword argument for this function" % list(kwargs)[0])
+TypeError: 'tag_id' is an invalid keyword argument for this function
+[2020-09-28 13:38:32,839][Thread-16:8588][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /blog/backend/add_article/]
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\myblog\blog\views.py", line 237, in add_article
+    article_obj=models.Article.objects.create(user=user,title=title,desc=desc,category_id=category_id,tag_id=tag_id)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\query.py", line 392, in create
+    obj = self.model(**kwargs)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\base.py", line 573, in __init__
+    raise TypeError("'%s' is an invalid keyword argument for this function" % list(kwargs)[0])
+TypeError: 'tag_id' is an invalid keyword argument for this function
+[2020-09-28 13:44:20,196][Thread-4:7972][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /blog/backend/add_article/]
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\myblog\blog\views.py", line 237, in add_article
+    article_obj=models.Article.objects.create(user=user,title=title,desc=desc,category_id=category_id)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\query.py", line 394, in create
+    obj.save(force_insert=True, using=self.db)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\base.py", line 808, in save
+    force_update=force_update, update_fields=update_fields)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\base.py", line 838, in save_base
+    updated = self._save_table(raw, cls, force_insert, force_update, using, update_fields)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\base.py", line 924, in _save_table
+    result = self._do_insert(cls._base_manager, using, fields, update_pk, raw)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\base.py", line 963, in _do_insert
+    using=using, raw=raw)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\query.py", line 1076, in _insert
+    return query.get_compiler(using=using).execute_sql(return_id)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\sql\compiler.py", line 1111, in execute_sql
+    for sql, params in self.as_sql():
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\sql\compiler.py", line 1064, in as_sql
+    for obj in self.query.objs
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\sql\compiler.py", line 1064, in <listcomp>
+    for obj in self.query.objs
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\sql\compiler.py", line 1063, in <listcomp>
+    [self.prepare_value(field, self.pre_save_val(field, obj)) for field in fields]
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\sql\compiler.py", line 1003, in prepare_value
+    value = field.get_db_prep_save(value, connection=self.connection)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\fields\related.py", line 963, in get_db_prep_save
+    return self.target_field.get_db_prep_save(value, connection=connection)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\fields\__init__.py", line 770, in get_db_prep_save
+    prepared=False)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\fields\__init__.py", line 958, in get_db_prep_value
+    value = self.get_prep_value(value)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\fields\__init__.py", line 966, in get_prep_value
+    return int(value)
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'QuerySet'
+[2020-09-28 13:47:14,158][Thread-4:7332][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /blog/backend/add_article/]
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\myblog\blog\views.py", line 237, in add_article
+    article_obj=models.Article.objects.create(user=user,title=title,desc=desc,category_id=category_id)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\query.py", line 394, in create
+    obj.save(force_insert=True, using=self.db)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\base.py", line 808, in save
+    force_update=force_update, update_fields=update_fields)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\base.py", line 838, in save_base
+    updated = self._save_table(raw, cls, force_insert, force_update, using, update_fields)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\base.py", line 924, in _save_table
+    result = self._do_insert(cls._base_manager, using, fields, update_pk, raw)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\base.py", line 963, in _do_insert
+    using=using, raw=raw)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\query.py", line 1076, in _insert
+    return query.get_compiler(using=using).execute_sql(return_id)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\sql\compiler.py", line 1111, in execute_sql
+    for sql, params in self.as_sql():
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\sql\compiler.py", line 1064, in as_sql
+    for obj in self.query.objs
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\sql\compiler.py", line 1064, in <listcomp>
+    for obj in self.query.objs
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\sql\compiler.py", line 1063, in <listcomp>
+    [self.prepare_value(field, self.pre_save_val(field, obj)) for field in fields]
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\sql\compiler.py", line 1003, in prepare_value
+    value = field.get_db_prep_save(value, connection=self.connection)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\fields\related.py", line 963, in get_db_prep_save
+    return self.target_field.get_db_prep_save(value, connection=connection)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\fields\__init__.py", line 770, in get_db_prep_save
+    prepared=False)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\fields\__init__.py", line 958, in get_db_prep_value
+    value = self.get_prep_value(value)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\fields\__init__.py", line 966, in get_prep_value
+    return int(value)
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'QuerySet'
+[2020-09-28 14:14:23,653][Thread-5:7032][task_id:blog.views][views.py:125][WARNING][又有人访问不存在页面了]
+[2020-09-28 14:20:12,349][Thread-1:4372][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /blog/yubatian]
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\myblog\blog\views.py", line 164, in home
+    "article_list":article_list,
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\shortcuts.py", line 30, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\loader.py", line 68, in render_to_string
+    return template.render(context, request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\backends\django.py", line 66, in render
+    return self.template.render(context)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 207, in render
+    return self._render(context)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 199, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 990, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 957, in render_annotated
+    return self.render(context)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\loader_tags.py", line 177, in render
+    return compiled_parent._render(context)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 199, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 990, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 957, in render_annotated
+    return self.render(context)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\loader_tags.py", line 72, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 990, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\base.py", line 957, in render_annotated
+    return self.render(context)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\template\defaulttags.py", line 173, in render
+    len_values = len(values)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\query.py", line 232, in __len__
+    self._fetch_all()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\query.py", line 1118, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\query.py", line 53, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\sql\compiler.py", line 876, in execute_sql
+    sql, params = self.as_sql()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\sql\compiler.py", line 428, in as_sql
+    extra_select, order_by, group_by = self.pre_sql_setup()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\sql\compiler.py", line 47, in pre_sql_setup
+    order_by = self.get_order_by()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\sql\compiler.py", line 298, in get_order_by
+    field, self.query.get_meta(), default_order=asc))
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\sql\compiler.py", line 606, in find_ordering_name
+    field, targets, alias, joins, path, opts = self._setup_joins(pieces, opts, alias)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\sql\compiler.py", line 639, in _setup_joins
+    pieces, opts, alias)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\sql\query.py", line 1417, in setup_joins
+    names, opts, allow_many, fail_on_missing=True)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\sql\query.py", line 1352, in names_to_path
+    "Choices are: %s" % (name, ", ".join(available)))
+django.core.exceptions.FieldError: Cannot resolve keyword 'id' into field. Choices are: article2tag, articledetail, articleupdown, category, category_id, comment, comment_count, create_time, desc, down_count, nid, tag, title, up_count, user, user_id
+[2020-09-28 14:20:34,858][Thread-1:7664][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /blog/yubatian]
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\myblog\blog\views.py", line 132, in home
+    article_list=models.Article.objects.filter(user=user).order_by("nid")
+NameError: name 'nid' is not defined
+[2020-09-28 14:21:09,531][Thread-1:8140][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /blog/yubatian]
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\myblog\blog\views.py", line 132, in home
+    article_list=models.Article.objects.filter(user=user).order_by("*nid")
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\query.py", line 965, in order_by
+    obj.query.add_ordering(*field_names)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\django\db\models\sql\query.py", line 1680, in add_ordering
+    raise FieldError('Invalid order_by arguments: %s' % errors)
+django.core.exceptions.FieldError: Invalid order_by arguments: ['*nid']
+[2020-09-28 15:38:52,741][Thread-5:4568][task_id:django.request][base.py:152][WARNING][Not Found: /article/]
+[2020-09-28 15:41:40,316][Thread-11:6732][task_id:django.request][base.py:152][WARNING][Not Found: /article/]
+[2020-09-29 13:27:06,537][Thread-5:1220][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]

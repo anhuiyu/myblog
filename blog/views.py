@@ -13,6 +13,7 @@ from django.db.models import F
 import logging
 from bbs import settings
 from bs4 import BeautifulSoup
+from utils.mypage import Page
 #生成一个logger实例，专门用来记录日志
 logger=logging.getLogger(__name__)
 
@@ -100,9 +101,12 @@ def get_valid_img(request):
     return HttpResponse(data)
 
 def index(request):
-    #查询所有的文章列表
-    article_list = models.Article.objects.all()
-    return render(request,"index.html",{"article_list":article_list})
+    page_num = request.GET.get("page")
+    article_count = models.Article.objects.all().count()
+    page_obj=Page(page_num, article_count, per_page=10, url_prefix="/index/", max_page=11,)
+    article_list=models.Article.objects.all().order_by("nid").reverse()[page_obj.start:page_obj.end]
+    page_html=page_obj.page_html()
+    return render(request,"index.html",{"article_list":article_list,"page_html":page_html})
 
 def logout(request):
     auth.logout(request)
@@ -124,44 +128,51 @@ def home(request,username,*args):
     if not  user:
         logger.warning("又有人访问不存在页面了")
         return HttpResponse("404")
+
+    page_num = request.GET.get("page")
+
     #如果用户存则需要将TA写的所有文章找出来
     blog=user.blog
     #我的文章列表
     if not args:
         logger.debug("args没有接收到参数，默认走的是用户的个人博客页面")
-        article_list=models.Article.objects.filter(user=user)
-    #我的文章分类及每个分类下文章数
-    # category_list=models.Category.objects.filter(blog=blog).annotate(c=Count("article")).values("title","c")
-    # tag_list=models.Tag.objects.filter(blog=blog).annotate(c=Count("article")).values("title","c")
-    #按日期归档
-    # archive_list=models.Article.objects.filter(user=user).extra(
-    #     select={"archive_ym":"date_format(create_time,'%%Y-%m')"}
-    # ).values("archive_ym").annotate(c=Count("nid")).values("archive_ym","c")
+        article_count = models.Article.objects.filter(user=user).count()
+        article_list=models.Article.objects.filter(user=user).order_by("nid").reverse()
     else:
         logger.debug(args)
         logger.debug("----------------")
         #表示按照文章的分类或tag或日期归档查询
         if args[0]=="category":
-            article_list=models.Article.objects.filter(user=user).filter(category__title=args[1])
+            article_count = models.Article.objects.filter(user=user).filter(category__title=args[1]).count()
+            article_list=models.Article.objects.filter(user=user).filter(category__title=args[1]).order_by("nid").reverse()
         elif args[0]=="tag":
-            article_list = models.Article.objects.filter(user=user).filter(tag__title=args[1])
+            article_count = models.Article.objects.filter(user=user).filter(tag__title=args[1]).count()
+            article_list = models.Article.objects.filter(user=user).filter(tag__title=args[1]).order_by("nid").reverse()
         else:
             try:
                 year,month=args[1].split("-")
                 logger.debug("分割得到参数year:{},month:{}".format(year,month))
                 logger.debug("*******")
+                article_count = models.Article.objects.filter(user=user).filter(
+                    create_time__year=year, create_time__month=month
+                ).count()
                 article_list=models.Article.objects.filter(user=user).filter(
                     create_time__year=year,create_time__month=month
-                )
-                print(article_list)
+                ).order_by("nid").reverse()
+
             except Exception as e:
                 logger.warning("请求访问的日志归档柜式不正确!!!")
                 logger.warning(str(e))
                 return HttpResponse("404")
+    page_obj = Page(page_num, article_count, per_page=10, url_prefix="/blog/"+request.user.username, max_page=11, )
+    article_list = article_list[page_obj.start:page_obj.end]
+    print(article_list)
+    page_html=page_obj.page_html()
     return render(request,"home.html",{
         "username":username,
         "blog":blog,
         "article_list":article_list,
+        "page_html":page_html,
     })
 
 def article_detail(request,username,pk):
@@ -221,6 +232,10 @@ def comment(request):
 def add_article(request):
     if request.method=="POST":
         title=request.POST.get("title")
+        category_title=request.POST.get("category")
+        category_obj=models.Category.objects.filter(title=category_title).first()
+        tag_title=request.POST.get("tag")
+        tag_obj=models.Tag.objects.filter(title=tag_title).first()
         article_content=request.POST.get("article_content")
         user=request.user
         #截取前150个字符，这里会选取真实的内容，不选标签
@@ -230,10 +245,14 @@ def add_article(request):
         for tag in bs.find_all():
             if tag.name in ["script","link"]:
                 tag.decompose()
-        article_obj=models.Article.objects.create(user=user,title=title,desc=desc)
+        article_obj=models.Article.objects.create(user=user,title=title,desc=desc,category=category_obj)
         models.ArticleDetail.objects.create(content=str(bs),article=article_obj)
-        return HttpResponse("添加成功")
-    return render(request,"add_article.html")
+        models.Article2Tag.objects.create(article=article_obj,tag=tag_obj)
+        return redirect("/blog/"+request.user.username)
+    blog = request.user.blog
+    category_list = models.Category.objects.filter(blog=blog)
+    tag_list = models.Tag.objects.filter(blog=blog)
+    return render(request,"add_article.html",{"category_list":category_list,"tag_list":tag_list})
 
 def upload(request):
     obj=request.FILES.get("upload_img")
